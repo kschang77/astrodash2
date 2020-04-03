@@ -23,6 +23,7 @@ $(document).ready(function() {
   }
 
   function updateTiles1() {
+    saveInputtoLS1();
     bday = moment(
       //   $("#bday").val()
       localStorage.getItem("month") +
@@ -30,9 +31,9 @@ $(document).ready(function() {
         localStorage.getItem("day") +
         "-" +
         localStorage.getItem("year"),
-      "MM-DD-YYYY",
-      true
+      "MM-DD-YYYY"
     );
+
     curyear = moment().year();
     tbday = bday.year(curyear);
     console.log("bday = " + bday, "tbday = " + tbday);
@@ -42,8 +43,6 @@ $(document).ready(function() {
       "uk-countdown",
       "date: " + tbday.format(moment.HTML5_FMT.DATE)
     );
-
-    saveInputtoLS1();
 
     astrosign = getZodiac(bday);
     console.log("astrosign=" + astrosign);
@@ -104,6 +103,7 @@ $(document).ready(function() {
       );
       return;
     } else {
+      saveInputtoLS2();
       // get weather
       queryCurrentWeather(tcity, tstate, getDataBoth2);
       // the callback get AQI and get pollen
@@ -120,14 +120,14 @@ $(document).ready(function() {
         $("#bday-day").val() +
         "-" +
         $("#bday-year").val(),
-      "MM-DD-YYYY",
-      true
+      "MM-DD-YYYY"
     );
 
     if (!bday.isValid()) {
       alert("Date entered is not valid!");
     } else {
       updateTiles1();
+      updateTiles2();
     }
   });
 
