@@ -5,311 +5,308 @@
     <title>AstroDash</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
-    <!--Libraries-->
+
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/css/uikit.min.css" />
-
 
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit-icons.min.js"></script>
-    
 
+    <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Moment and Moment lunar -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://unpkg.com/moment-lunar@0.0.4/moment-lunar.min.js"></script>
-    <!--Scripts-->
-    <script src="assets/script.js"></script>
-    <!-- <script src="assets/custom1.js"></script> -->
-    
+
 </head>
 
 <body>
-    <!--background image-->
-    <div class="uk-background-fixed uk-background-cover uk-height-viewport uk-light"         uk-img>
-    
-    <!-- <script type="text/javascript"> 
-        ChangeIt();
-        </script> -->
-            
 
-        
+    <!-- Background Image -->
+    <div class="uk-background-fixed uk-background-cover uk-height-viewport uk-light" uk-img>
+
         <!--Navbar Area-->
         <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
-            
-            
+
             <!--Navbar Left-->
             <div class="uk-navbar-left">
-                
-               
-                <!--Settings-->
+
+                <!--Settings Button-->
                 <a class="uk-button uk-button-default" href="#modal-center-setup" uk-toggle>
                     <h1>Setup</h2>
                 </a>
-                
+
+                <!-- Settings Modal -->
                 <div id="modal-center-setup" class="uk-flex-top" uk-modal>
+
+                    <!-- Settings Body -->
                     <div class="uk-modal-dialog uk-modal-body  uk-margin-auto-vertical">
+
+                        <!-- Close Modal Button -->
                         <button class="uk-modal-close-default" type="button" uk-close></button>
+
+                        <!-- Form heading -->
+                        <h2>Settings</h2>
                         <p>
-                            <div class="uk-container uk-container-expand uk-container-large ">
-                                <h2>Settings</h2>
-                                <p>Fill in your information to learn about your horoscope and get your day started
-                                    right! </p>
-                                <form class=" uk-position-medium uk-overflow-auto uk-overlay uk-overlay-default">
-                                    <fieldset class="uk-fieldset">
-                                        
-
-                                        <!--Birth Info-->
-                                        <fieldset class="uk-fieldset">
-                                            <legend class="uk-legend">When is your Birthday?
-                                            </legend>
-                                            <br>
-                                            <div class="uk-margin uk-width-1-2 uk-display-inline">
-                                                
-                                                
-                                                <!-- Month Field -->
-                                                <div class="uk-margin">
-                                                    <legend class="uk-legend">Month
-                                                    </legend>
-                                                    <input class="uk-input" type="text" id="bday-month"
-                                                        placeholder="MM">
-                                                </div>
-
-
-                                                <!-- Day Field -->
-                                                <div class="uk-margin">
-                                                    <legend class="uk-legend">Day
-                                                    </legend>
-                                                    <input class="uk-input" type="text" id="bday-day" placeholder="DD">
-                                                </div>
-
-
-                                                <!-- Year Field -->
-                                                <div class="uk-margin">
-                                                    <legend class="uk-legend">Year
-                                                    </legend>
-                                                    <input class="uk-input" type="text" id="bday-year"
-                                                        placeholder="YYYY">
-                                                </div>
-                                            </div>
-
-                                        </fieldset>
-                                        <!--End Birth-->
-
-                                        
-                                        <!--Location Data-->
-                                        <fieldset class="uk-fieldset">
-                                            <legend class="uk-legend">Where are you currently living?
-                                            </legend>
-                                            <br>
-                                            <div class="uk-margin uk-width-1-2 uk-display-inline">
-                                                
-                                                
-                                                <!-- City Data -->
-                                                <legend class="uk-legend">City
-                                                </legend>
-                                                <div class="uk-margin">
-                                                    <input class="uk-input" type="text" id="city">
-                                                </div>
-                                                
-                                                
-                                                <!-- State Data -->
-                                                <legend class="uk-legend">State
-                                                </legend>
-                                                <div class="uk-margin">
-                                                    <input class="uk-input" type="text" id="state">
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                        <!--End Location-->
-
-
-                                        <div class="uk-margin-top uk-width-1-2">
-                                            <button class="uk-button uk-align-right uk-modal-close" id="setup-submit">Submit</button>
-                                        </div>
-                                </form>
-                            </div>
+                            Fill in your information to learn about your horoscope and get your day started
+                            right!
                         </p>
 
+                        <!-- Form -->
+                        <form class=" uk-position-medium uk-overflow-auto uk-overlay uk-overlay-default">
+
+
+
+                            <!--Birth Info-->
+                            <fieldset class="uk-fieldset">
+
+                                <legend class="uk-legend">When is your Birthday?</legend><br>
+
+                                <div class="uk-margin uk-width-1-2 uk-display-inline">
+
+                                    <!-- Month Field -->
+                                    <div>
+                                        <legend class="uk-legend">Month</legend>
+                                        <input class="uk-input" type="text" id="bday-month" placeholder="MM">
+                                    </div>
+
+
+                                    <!-- Day Field -->
+                                    <div>
+                                        <legend class="uk-legend">Day</legend>
+                                        <input class="uk-input" type="text" id="bday-day" placeholder="DD">
+                                    </div>
+
+
+                                    <!-- Year Field -->
+                                    <div>
+                                        <legend class="uk-legend">Year</legend>
+                                        <input class="uk-input" type="text" id="bday-year" placeholder="YYYY">
+                                    </div>
+                                </div>
+
+                            </fieldset>
+
+                            <br>
+
+                            <!--Location Data-->
+                            <fieldset class="uk-fieldset">
+                                <legend class="uk-legend">Where are you currently living?</legend><br>
+
+                                <div class="uk-margin uk-width-1-2 uk-display-inline">
+
+                                    <!-- City Data -->
+                                    <legend class="uk-legend">City
+                                    </legend>
+                                    <div class="uk-margin">
+                                        <input class="uk-input" type="text" id="city">
+                                    </div>
+
+                                    <!-- State Data -->
+                                    <legend class="uk-legend">State
+                                    </legend>
+                                    <div class="uk-margin">
+                                        <input class="uk-input" type="text" id="state">
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <div class="uk-margin-top uk-width-1-2">
+                                <button class="uk-button uk-align-right uk-modal-close"
+                                    id="setup-submit">Submit</button>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
-                <!--End Settings-->
-
             </div>
-            <!--End Navbar Left-->
-            
+           
 
             <!--Navbar Right-->
-            <div class="uk-navbar-center"></div>
             <div class="uk-navbar-right">
 
-
-                <!--Tools / App Dash-->
+                <!-- Dash Button -->
                 <a class="uk-button uk-button-default" href="#modal-full-tools" uk-toggle>
                     <h1>Dash</h1>
                 </a>
 
+                <!-- Modal dashboard -->
                 <div id="modal-full-tools" class="uk-modal-full" uk-modal>
+
                     <div class="uk-modal-dialog .uk-background-secondary">
+
+                        <!-- Back Button -->
                         <button
                             class="uk-modal-close-full uk-close-large uk-button uk-button-default uk-button-large">Back</button>
+
                         <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
+
+                            <!-- Background Image -->
                             <div class="uk-background-cover" style="background-image: url('assets/images/zodiac.jpg');"
                                 uk-height-viewport>
                             </div>
+
+                            <!-- Dashboard Div -->
                             <div class="uk-padding-large">
+
+                                <!-- Oracle Heading -->
                                 <h1>AstroDash Oracle</h1>
-                               
-                               
+
                                 <!--Individual Apps-->
                                 <div class="uk-child-width-1-2 uk-child-width-1-3@s uk-grid-small uk-light" uk-grid>
+
+                                    <!-- App Modal 1 -->
                                     <div>
-                                        
-                                        
-                                        <!--begin App Modal 1-->
+                                        <!-- Modal Link -->
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle "
                                             uk-toggle="target: #modal-container-app-1" href="#">Your Daily Horoscope</a>
+                                        <!-- Modal Popup Container -->
                                         <div id="modal-container-app-1" class="uk-modal-container"
                                             uk-modal="stack: true">
+                                            <!-- Modal Body -->
                                             <div class="uk-modal-dialog uk-modal-body">
+                                                <!-- Close Button -->
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
+                                                <!-- Header -->
                                                 <h2 class="uk-modal-title" id="modal1">Headline1</h2>
-                                                <!--App1 Placement-->
+
+                                                <!-- App 1 Placement -->
                                                 <p id="app1"></p>
                                             </div>
                                         </div>
-                                        <!--End App Modal 1-->
                                     </div>
+
+                                    <!--App Modal 2 -->
                                     <div>
-                                       
-                                       
-                                        <!--begin App Modal 2-->
-                                        <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle "
+                                        <!-- Modal Link -->
+                                        <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle"
                                             uk-toggle="target: #modal-container-app-2" href="#">
                                             Your Chinese Zodiac 生肖</a>
+                                        <!-- Modal Popup Container -->
                                         <div id="modal-container-app-2" class="uk-modal-container"
                                             uk-modal="stack: true">
+                                            <!-- Modal Body -->
                                             <div class="uk-modal-dialog uk-modal-body">
+                                                <!-- Close Button -->
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
+                                                <!-- Header -->
                                                 <h2 class="uk-modal-title" id="modal2">Headline2</h2>
-                                                
-                                                
-                                                <!--App 2 Placement-->
+
+                                                <!-- App 2 Placement -->
                                                 <p id="app2"></p>
                                             </div>
                                         </div>
-                                        <!--End App Modal 2-->
-                                    
                                     </div>
+
+                                    <!-- App Modal 3 -->
                                     <div>
-                                        
-                                        
-                                        <!--begin App Modal 3-->
+                                        <!-- Modal Link -->
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle "
-                                            uk-toggle="target: #modal-container-app-3"
-                                            href="#">Your word of the day</a>
+                                            uk-toggle="target: #modal-container-app-3" href="#">Your word of the day</a>
+                                        <!-- Modal Popup Container -->
                                         <div id="modal-container-app-3" class="uk-modal-container"
                                             uk-modal="stack: true">
+                                            <!-- Modal Body -->
                                             <div class="uk-modal-dialog uk-modal-body">
+                                                <!-- Close button -->
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
+                                                <!-- Header -->
                                                 <h2 class="uk-modal-title" id="modal3">Headline3</h2>
-                                                
-                                                
-                                                <!--App 3 Placement-->
+
+                                                <!-- App 3 Placement -->
                                                 <p id="app3"></p>
                                             </div>
                                         </div>
-                                        <!--End App Modal 3-->
                                     </div>
+
+                                    <!-- App Modal 4 -->
                                     <div>
-                                        
-                                        
-                                        <!--begin App Modal 4-->
+                                        <!-- Modal Link -->
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle "
-                                            uk-toggle="target: #modal-container-app-4"
-                                            href="#">Your sentiment of the day</a>
+                                            uk-toggle="target: #modal-container-app-4" href="#">Your sentiment of the
+                                            day</a>
+                                        <!-- Modal Popup Container -->
                                         <div id="modal-container-app-4" class="uk-modal-container"
                                             uk-modal="stack: true">
+                                            <!-- Modal Body -->
                                             <div class="uk-modal-dialog uk-modal-body">
+                                                <!-- Close Button -->
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
+                                                <!-- Header -->
                                                 <h2 class="uk-modal-title" id="modal4">Headline4</h2>
-                                                
-                                                
-                                                <!--App 4 Placement-->
+
+                                                <!-- App 4 Placement -->
                                                 <p id="app4"></p>
                                             </div>
                                         </div>
-                                        <!--End App Modal 4-->
-
                                     </div>
+
+                                    <!-- App Modal 5 -->
                                     <div>
-                                        
-                                        
-                                        <!--begin App Modal 5-->
+
+                                        <!-- Modal Link -->
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle "
                                             uk-toggle="target: #modal-container-app-5"
                                             href="#">Weather</a>
                                         <div id="modal-container-app-5" class="uk-modal-container"
                                             uk-modal="stack: true">
+                                            <!-- Modal Body -->
                                             <div class="uk-modal-dialog uk-modal-body">
+                                                <!-- Close Button -->
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
+                                                <!-- Header -->
                                                 <h2 class="uk-modal-title" id="modal5">Weather</h2>
-                                                
-                                                
-                                                <!--App 5 Placement-->
+
+                                                <!-- App 5 Placement -->
                                                 <p id="app5"></p>
                                             </div>
                                         </div>
-                                        <!--End App Modal 5-->
-
                                     </div>
+
+                                    <!-- App Modal 6 -->
                                     <div>
-                                        
-                                        
-                                        <!--begin App Modal 6-->
+
+                                        <!-- Modal Link -->
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle "
-                                            uk-toggle="target: #modal-container-app-6"
-                                            href="#">Air Quality Index</a>
+                                            uk-toggle="target: #modal-container-app-6" href="#">Air Quality Index</a>
+                                        <!-- Modal Popup Container -->
                                         <div id="modal-container-app-6" class="uk-modal-container"
                                             uk-modal="stack: true">
+                                            <!-- Modal Body -->
                                             <div class="uk-modal-dialog uk-modal-body">
+                                                <!-- Close Button -->
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
+                                                <!-- Header -->
                                                 <h2 class="uk-modal-title" id="modal6">Headline</h2>
-                                                
-                                                
-                                                <!--App 6 Placement-->
-                                                <p id="app6">
-                                                    <div id="ex1"></div>
-                                                    <div id="ex2"></div>
-                                                    <div id="ex3"></div>
-                                                    
-                                                    </p>
+
+                                                <!--App 6 Placement -->
+                                                <p id="app6"></p>
                                             </div>
                                         </div>
-                                        <!--End App Modal 6-->
-
                                     </div>
+
+
+                                    <!-- App Modal 7 -->
                                     <div>
-
-
-                                        <!--begin App Modal 7-->
+                                        <!-- Modal Link -->
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle "
-                                            uk-toggle="target: #modal-container-app-7"
-                                            href="#">Pollen Info</a>
+                                            uk-toggle="target: #modal-container-app-7" href="#">Pollen Info</a>
+                                        <!-- Modal Popup Container -->
                                         <div id="modal-container-app-7" class="uk-modal-container"
                                             uk-modal="stack: true">
+                                            <!-- Modal Body -->
                                             <div class="uk-modal-dialog uk-modal-body">
+                                                <!-- Close Button -->
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
+                                                <!-- Header -->
                                                 <h2 class="uk-modal-title">Headline</h2>
-                                                
-                                                
-                                                <!--App 7 Placement-->
+
+                                                <!-- App 7 Placement -->
                                                 <p id="app7"></p>
                                             </div>
                                         </div>
-                                        <!--End App Modal 7-->
-                                    
                                     </div>
                                     <div >
                                         
@@ -318,31 +315,35 @@
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle uk-invisible"
                                             uk-toggle="target: #modal-container-app-8"
                                             href="#">#modal-container-app-8</a>
+                                        <!-- Modal Popup Container -->
                                         <div id="modal-container-app-8" class="uk-modal-container"
                                             uk-modal="stack: true">
+                                            <!-- Modal Body -->
                                             <div class="uk-modal-dialog uk-modal-body">
+                                                <!-- Close Button -->
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
+                                                <!-- Header -->
                                                 <h2 class="uk-modal-title">Headline</h2>
-                                               
-                                               
-                                                <!--App 8 Placement-->
+
+                                                <!-- App 8 Placement -->
                                                 <p id="app8"></p>
                                             </div>
                                         </div>
-                                        <!--End App Modal 8-->
-
                                     </div>
-                                    <div>
 
 
                                         <!--begin App Modal 9-->
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle uk-invisible"
                                             uk-toggle="target: #modal-container-app-9"
                                             href="#">#modal-container-app-9</a>
+                                                <!-- Modal Popup Container -->
                                         <div id="modal-container-app-9" class="uk-modal-container"
                                             uk-modal="stack: true">
+                                             <!-- Modal Body -->
                                             <div class="uk-modal-dialog uk-modal-body">
+                                                 <!-- Close Button -->
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
+                                                 <!-- Header -->
                                                 <h2 class="uk-modal-title">Headline</h2>
 
 
@@ -350,20 +351,17 @@
                                                 <p id="app9"></p>
                                             </div>
                                         </div>
-                                        <!--End App Modal 9-->
-
                                     </div>
                                 </div>
 
-                                <!--Quote 2-->
+                                <!-- Quote 2 -->
                                 <p id="quote2"></p>
 
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--End Tools Dash-->
-                
+
             </div>
         </nav>
 
@@ -371,15 +369,13 @@
         <!--Article Area-->
         <article>
 
-<div class="uk-position-center">
-<img src="assets/images/logowhiteonblack.png">
-</div>
-
+            <div class="uk-position-center">
+                <img src="assets/images/logowhiteonblack.png">
+            </div>
 
         </article>
-        <!--End Article Area-->
+       
 
-        <!--Footer Area-->
         <!-- Birthday Countdown -->
         <!--script -->
 
@@ -405,12 +401,11 @@
             </div>
 
         </div>
-        <!--End Birthday Count Down-->
-    </div><!-- end background image-->
-<!--Scripts-->
-<script src="assets/custom1.js"></script>
+        
+    </div> <!-- end background image-->
+
 </body>
-// this loads the localStorage values back into form
+
 <script>
     console.log(localStorage.getItem("month"));
     $("#bday-month").val(localStorage.getItem("month"));
@@ -424,17 +419,17 @@
     console.log(localStorage.getItem("state"))
     $("#state").val(localStorage.getItem("state"))
 
-    // and this randomizes the background
+    // Randomize background
 
     // note: as of now, there's bg1 through bg6
-    var bgrandom = Math.floor(Math.random() * 5)+1;
+    var bgrandom = Math.floor(Math.random() * 5) + 1;
     document.body.background = "assets/images/bg" + bgrandom + ".jpg";
-    console.log("background = "+"assets/images/bg" + bgrandom + ".jpg");
+    console.log("background = " + "assets/images/bg" + bgrandom + ".jpg");
     document.body.style.backgroundRepeat = "repeat";// Background repeat
 
     // updateTiles1();
 
 </script>
-             
+
 
 </html>
