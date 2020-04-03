@@ -5,12 +5,16 @@ var bday, astrosign, czodiac, keyword, sentiment;
 $(document).ready(function() {
   //   var horoscope = "";
   updateTiles1();
+  updateTiles2();
 
-  function saveInputtoLS() {
+  function saveInputtoLS1() {
     // saves the various input fields to LocalStorage
     localStorage.setItem("day", $("#bday-day").val());
     localStorage.setItem("month", $("#bday-month").val());
     localStorage.setItem("year", $("#bday-year").val());
+  }
+
+  function saveInputtoLS2() {
     localStorage.setItem("city", $("#city").val());
     localStorage.setItem("state", $("#state").val());
   }
@@ -28,7 +32,7 @@ $(document).ready(function() {
     );
     console.log("bday = " + bday);
 
-    saveInputtoLS();
+    saveInputtoLS1();
 
     astrosign = getZodiac(bday);
     console.log("astrosign=" + astrosign);
@@ -58,6 +62,42 @@ $(document).ready(function() {
 
     $("h2#modal4").text(sentiment);
     $("#app4").text(" is your sentiment of the day");
+  }
+
+  function updateTiles2() {
+    // tries to read city/state from localstorage
+    localStorage.setItem("city", $("#city").val());
+    localStorage.setItem("state", $("#state").val());
+
+    var tcity = localStorage.getItem("city");
+    var tstate = localStorage.getItem("state");
+
+    // if either are blank, set displays to "run setup first"
+
+    if (tcity === "" || tstate === "") {
+      $("h2#modal5").text("No Data");
+      $("#app5").text(
+        "Please enter a city and state in setup to see weather, air quality, and pollen info"
+      );
+
+      $("h2#modal6").text("No Data");
+      $("#app6").text(
+        "Please enter a city and state in setup to see weather, air quality, and pollen info"
+      );
+
+      $("h2#modal7").text("No Data");
+      $("#app7").text(
+        "Please enter a city and state in setup to see weather, air quality, and pollen info"
+      );
+      return;
+    } else {
+      // get weather
+
+      queryCurrentWeather(tcity);
+
+      // get AQI
+      // get pollen
+    }
   }
 
   //birthday submit
