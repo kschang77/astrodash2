@@ -1,6 +1,9 @@
 // Once document is loaded
 var resp = "";
 var bday, astrosign, czodiac, keyword, sentiment;
+var owmapikey = "8164cdd41308f159d85ff4ef8f3b5171"; // openweathermap.org
+var breezokey = "a7204a3f724a470fb35ad085b72fdba7"; //breezometer.com
+var curlat, curlon; // need it for UV, BreezoMeter, Pollen
 
 $(document).ready(function() {
   //   var horoscope = "";
@@ -339,9 +342,6 @@ $(document).ready(function() {
   // var zodiac = chineseZodiac("1970-01-01");
 
   // stuff for
-  var owmapikey = "8164cdd41308f159d85ff4ef8f3b5171"; // openweathermap.org
-  var breezokey = "a7204a3f724a470fb35ad085b72fdba7"; //breezometer.com
-  var curlat, curlon; // need it for UV, BreezoMeter, Pollen
 
   function kelvinToFahrenheit(kelvin) {
     return (kelvin - 273.15) * 1.8 + 32;
