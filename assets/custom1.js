@@ -30,16 +30,16 @@ signUpButton.addEventListener("click", function (event) {
     if (day === "") {
         displayMessage("error", "Sorry, day cannot be blank");
     }
-    else if (month === "") {
+    if (month === "") {
         displayMessage("error", "Sorry, month cannot be blank");
     }
-    else if (year === "") {
+    if (year === "") {
         displayMessage("error", "Sorry, year cannot be blank");
     }
-    else if (city === "") {
+    if (city === "") {
         displayMessage("error", "Sorry, city cannot be blank");
     }
-    else if (state === "") {
+    if (state === "") {
         displayMessage("error", "Sorry, state cannot be blank");
     }
     else {
