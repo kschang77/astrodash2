@@ -5,8 +5,11 @@
     <title>AstroDash</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <!--Libraries-->
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/css/uikit.min.css" />
+
 
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit.min.js"></script>
@@ -20,32 +23,39 @@
     <div class="uk-background-fixed uk-background-cover uk-height-viewport uk-light" data-src="assets/images/bg1.jpg"
         uk-img>
 
+        
         <!--Navbar Area-->
-
         <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+            
+            
+            <!--Navbar Left-->
             <div class="uk-navbar-left">
+                
+               
                 <!--Settings-->
                 <a class="uk-button uk-button-default" href="#modal-center-setup" uk-toggle>
                     <h1>Setup</h2>
                 </a>
-
                 <div id="modal-center-setup" class="uk-flex-top" uk-modal>
                     <div class="uk-modal-dialog uk-modal-body  uk-margin-auto-vertical">
-
                         <button class="uk-modal-close-default" type="button" uk-close></button>
-
                         <p>
                             <div class="uk-container uk-container-expand uk-container-large ">
                                 <h2>Settings</h2>
-                                <p>Fill in your information to learn about your horoscope and get your day started right! </p>
+                                <p>Fill in your information to learn about your horoscope and get your day started
+                                    right! </p>
                                 <form class=" uk-position-medium uk-overflow-auto uk-overlay uk-overlay-default">
                                     <fieldset class="uk-fieldset">
+                                        
 
+                                        <!--Birth Info-->
                                         <fieldset class=“uk-fieldset”>
                                             <legend class=“uk-legend”>When is your Birthday?
                                             </legend>
                                             <br>
                                             <div class=“uk-margin uk-width-1-2 uk-display-inline”>
+                                                
+                                                
                                                 <!-- Month Field -->
                                                 <div class=“uk-margin”>
                                                     <legend class=“uk-legend”>Month
@@ -53,12 +63,16 @@
                                                     <input class=“uk-input” type=“text” id=“bday-month”
                                                         placeholder=“MM”>
                                                 </div>
+
+
                                                 <!-- Day Field -->
                                                 <div class=“uk-margin”>
                                                     <legend class=“uk-legend”>Day
                                                     </legend>
                                                     <input class=“uk-input” type=“text” id=“bday-day” placeholder=“DD”>
                                                 </div>
+
+
                                                 <!-- Year Field -->
                                                 <div class=“uk-margin”>
                                                     <legend class=“uk-legend”>Year
@@ -69,19 +83,26 @@
                                             </div>
 
                                         </fieldset>
+                                        <!--End Birth-->
 
+                                        
+                                        <!--Location Data-->
                                         <fieldset class=“uk-fieldset”>
                                             <legend class=“uk-legend”>Where are you currently living?
                                             </legend>
                                             <br>
                                             <div class=“uk-margin uk-width-1-2 uk-display-inline”>
-                                                <!-- City -->
+                                                
+                                                
+                                                <!-- City Data -->
                                                 <legend class=“uk-legend”>City
                                                 </legend>
                                                 <div class=“uk-margin”>
                                                     <input class=“uk-input” type=“text” id=“city”>
                                                 </div>
-                                                <!-- City -->
+                                                
+                                                
+                                                <!-- State Data -->
                                                 <legend class=“uk-legend”>State
                                                 </legend>
                                                 <div class=“uk-margin”>
@@ -89,8 +110,11 @@
                                                 </div>
                                             </div>
                                         </fieldset>
-                                        <div class=“uk-margin-top  uk-width-1-2”>
-                                            <button class= “uk-button .uk-align-right” id=“bday-submit”>Submit</button>
+                                        <!--End Location-->
+
+
+                                        <div class=“uk-margin-top uk-width-1-2”>
+                                            <button class=“uk-button .uk-align-right” id=“bday-submit”>Submit</button>
                                         </div>
                                 </form>
                             </div>
@@ -99,16 +123,23 @@
                     </div>
                 </div>
                 <!--End Settings-->
+
             </div>
+            <!--End Navbar Left-->
+            
+
+            <!--Navbar Right-->
             <div class="uk-navbar-center">...</div>
             <div class="uk-navbar-right">
-                <!--Tools Dash-->
+
+
+                <!--Tools / App Dash-->
                 <a class="uk-button uk-button-default" href="#modal-full-tools" uk-toggle>
                     <h1>Tools</h1>
                 </a>
 
                 <div id="modal-full-tools" class="uk-modal-full" uk-modal>
-                    <div class="uk-modal-dialog">
+                    <div class="uk-modal-dialog .uk-background-secondary">
                         <button
                             class="uk-modal-close-full uk-close-large uk-button uk-button-default uk-button-large">Back</button>
                         <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
@@ -117,9 +148,13 @@
                             </div>
                             <div class="uk-padding-large">
                                 <h1>Tools</h1>
+                               
+                               
                                 <!--Individual Apps-->
                                 <div class="uk-child-width-1-2 uk-child-width-1-3@s uk-grid-small uk-light" uk-grid>
                                     <div>
+                                        
+                                        
                                         <!--begin App Modal 1-->
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle "
                                             uk-toggle="target: #modal-container-app-1" href="#">Daily
@@ -129,23 +164,18 @@
                                             <div class="uk-modal-dialog uk-modal-body">
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
                                                 <h2 class="uk-modal-title">Headline</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam, quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                    consequat.
-                                                    Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                    cillum dolore eu
-                                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                    proident, sunt in
-                                                    culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+                                                <!--App1 Placement-->
+                                                <p id="app1"></p>
                                             </div>
                                         </div>
                                         <!--End App Modal 1-->
 
                                     </div>
                                     <div>
+                                       
+                                       
                                         <!--begin App Modal 2-->
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle "
                                             uk-toggle="target: #modal-container-app-2" href="#">
@@ -155,22 +185,18 @@
                                             <div class="uk-modal-dialog uk-modal-body">
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
                                                 <h2 class="uk-modal-title">Headline</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam, quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                    consequat.
-                                                    Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                    cillum dolore eu
-                                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                    proident, sunt in
-                                                    culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                
+                                                
+                                                <!--App 2 Placement-->
+                                                <p id="app2"></p>
                                             </div>
                                         </div>
                                         <!--End App Modal 2-->
+                                    
                                     </div>
                                     <div>
+                                        
+                                        
                                         <!--begin App Modal 3-->
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle "
                                             uk-toggle="target: #modal-container-app-3"
@@ -180,22 +206,17 @@
                                             <div class="uk-modal-dialog uk-modal-body">
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
                                                 <h2 class="uk-modal-title">Headline</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam, quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                    consequat.
-                                                    Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                    cillum dolore eu
-                                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                    proident, sunt in
-                                                    culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                
+                                                
+                                                <!--App 3 Placement-->
+                                                <p id="app3"></p>
                                             </div>
                                         </div>
                                         <!--End App Modal 3-->
                                     </div>
                                     <div>
+                                        
+                                        
                                         <!--begin App Modal 4-->
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle "
                                             uk-toggle="target: #modal-container-app-4"
@@ -205,22 +226,18 @@
                                             <div class="uk-modal-dialog uk-modal-body">
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
                                                 <h2 class="uk-modal-title">Headline</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam, quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                    consequat.
-                                                    Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                    cillum dolore eu
-                                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                    proident, sunt in
-                                                    culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                
+                                                
+                                                <!--App 4 Placement-->
+                                                <p id="app4"></p>
                                             </div>
                                         </div>
                                         <!--End App Modal 4-->
+
                                     </div>
                                     <div>
+                                        
+                                        
                                         <!--begin App Modal 5-->
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle "
                                             uk-toggle="target: #modal-container-app-5"
@@ -230,22 +247,18 @@
                                             <div class="uk-modal-dialog uk-modal-body">
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
                                                 <h2 class="uk-modal-title">Headline</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam, quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                    consequat.
-                                                    Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                    cillum dolore eu
-                                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                    proident, sunt in
-                                                    culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                
+                                                
+                                                <!--App 5 Placement-->
+                                                <p id="app5"></p>
                                             </div>
                                         </div>
                                         <!--End App Modal 5-->
+
                                     </div>
                                     <div>
+                                        
+                                        
                                         <!--begin App Modal 6-->
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle "
                                             uk-toggle="target: #modal-container-app-6"
@@ -255,22 +268,18 @@
                                             <div class="uk-modal-dialog uk-modal-body">
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
                                                 <h2 class="uk-modal-title">Headline</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam, quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                    consequat.
-                                                    Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                    cillum dolore eu
-                                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                    proident, sunt in
-                                                    culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                
+                                                
+                                                <!--App 6 Placement-->
+                                                <p id="app6"></p>
                                             </div>
                                         </div>
                                         <!--End App Modal 6-->
+
                                     </div>
                                     <div>
+
+
                                         <!--begin App Modal 7-->
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle "
                                             uk-toggle="target: #modal-container-app-7"
@@ -280,22 +289,18 @@
                                             <div class="uk-modal-dialog uk-modal-body">
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
                                                 <h2 class="uk-modal-title">Headline</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam, quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                    consequat.
-                                                    Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                    cillum dolore eu
-                                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                    proident, sunt in
-                                                    culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                
+                                                
+                                                <!--App 7 Placement-->
+                                                <p id="app7"></p>
                                             </div>
                                         </div>
-                                        <!--End App Modal 8-->
+                                        <!--End App Modal 7-->
+                                    
                                     </div>
                                     <div>
+                                        
+                                        
                                         <!--begin App Modal 8-->
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle "
                                             uk-toggle="target: #modal-container-app-8"
@@ -305,22 +310,18 @@
                                             <div class="uk-modal-dialog uk-modal-body">
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
                                                 <h2 class="uk-modal-title">Headline</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam, quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                    consequat.
-                                                    Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                    cillum dolore eu
-                                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                    proident, sunt in
-                                                    culpa qui officia deserunt mollit anim id est laborum.</p>
+                                               
+                                               
+                                                <!--App 8 Placement-->
+                                                <p id="app8"></p>
                                             </div>
                                         </div>
                                         <!--End App Modal 8-->
+
                                     </div>
                                     <div>
+
+
                                         <!--begin App Modal 9-->
                                         <a class="uk-background-primary uk-background-cover uk-height-small uk-panel uk-flex uk-flex-center uk-flex-middle "
                                             uk-toggle="target: #modal-container-app-9"
@@ -330,36 +331,26 @@
                                             <div class="uk-modal-dialog uk-modal-body">
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
                                                 <h2 class="uk-modal-title">Headline</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                    eiusmod tempor
-                                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                    veniam, quis
-                                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                    consequat.
-                                                    Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                                    cillum dolore eu
-                                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                                    proident, sunt in
-                                                    culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+                                                <!--App 2 Placement-->
+                                                <p id="app2"></p>
                                             </div>
                                         </div>
                                         <!--End App Modal 9-->
 
-
                                     </div>
                                 </div>
 
-                                <!--ssssssssssssssssssssssssss-->
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                    aliquip ex ea commodo consequat. </p>
+                                <!--Quote 2-->
+                                <p id="quote2"></p>
 
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--End Tools Dash-->
+                
             </div>
         </nav>
 
