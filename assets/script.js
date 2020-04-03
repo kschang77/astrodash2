@@ -4,6 +4,7 @@ var bday, astrosign, czodiac, keyword, sentiment;
 
 $(document).ready(function() {
   //   var horoscope = "";
+  updateTiles1();
 
   function saveInputtoLS() {
     // saves the various input fields to LocalStorage
@@ -12,6 +13,51 @@ $(document).ready(function() {
     localStorage.setItem("year", $("#bday-year").val());
     localStorage.setItem("city", $("#city").val());
     localStorage.setItem("state", $("#state").val());
+  }
+
+  function updateTiles1() {
+    bday = moment(
+      //   $("#bday").val()
+      localStorage.getItem("month") +
+        "-" +
+        localStorage.getItem("day") +
+        "-" +
+        localStorage.getItem("year"),
+      "MM-DD-YYYY",
+      true
+    );
+    console.log("bday = " + bday);
+
+    saveInputtoLS();
+
+    astrosign = getZodiac(bday);
+    console.log("astrosign=" + astrosign);
+
+    console.log($("#modal1").text());
+    //set modal1 to astrological sign
+    $("#modal1").text(astrosign);
+
+    czodiac = chineseZodiac(bday);
+    console.log("czodiac=" + czodiac);
+
+    //   $(".horoscope2").text(czodiac);
+    //   $("#horoscope2").text(" is your Chinese zodiac");
+    // set modal2 to Chinese zodiac
+    $("#modal2").text(czodiac);
+
+    getHoroscope(astrosign, getDataBoth);
+    // resp now contains the horoscope
+    //   $("#horoscope1").text(resp);
+    $("#app1").text(resp);
+
+    // keyword now has the keyword from horoscope
+    $("h2#modal3").text(keyword);
+    $("#app3").text(" is your word of the day");
+
+    // sentiment now has sentiment from horoscope
+
+    $("h2#modal4").text(sentiment);
+    $("#app4").text(" is your sentiment of the day");
   }
 
   //birthday submit
@@ -31,28 +77,7 @@ $(document).ready(function() {
     if (!bday.isValid()) {
       alert("Date entered is not valid!");
     } else {
-      console.log("bday = " + bday);
-
-      saveInputtoLS();
-
-      astrosign = getZodiac(bday);
-      console.log("astrosign=" + astrosign);
-
-      $(".horoscope1").text(astrosign);
-
-      czodiac = chineseZodiac(bday);
-      console.log("czodiac=" + czodiac);
-
-      $(".horoscope2").text(czodiac);
-      $("#horoscope2").text(" is your Chinese zodiac");
-
-      getHoroscope(astrosign, getDataBoth);
-      // resp now contains the horoscope
-      $("#horoscope1").text(resp);
-
-      // keyword now has the keyword from horoscope
-      // sentiment now has sentiment from horoscope
-      //
+      updateTiles1();
     }
   });
 
@@ -176,6 +201,9 @@ $(document).ready(function() {
     }).then(function(response) {
       //   console.log(response);
       console.log(response.sentiment.type);
+      $("h2#modal4").text(response.sentiment.type);
+      $("#app4").text(" is your sentiment of the day");
+
       return response.sentiment.type;
     });
   }
@@ -219,6 +247,10 @@ $(document).ready(function() {
       // random version
       var rand = Math.floor(Math.random() * arr.length);
       console.log(arr[rand].label);
+
+      $("h2#modal3").text(arr[rand].label);
+      $("#app3").text(" is your word of the day");
+
       return arr[rand].label;
       // callback();
     });
@@ -243,6 +275,8 @@ $(document).ready(function() {
     }).then(function(response) {
       // options = response.description;
       resp = response.description;
+      $("#app1").text(resp);
+
       // console.log(response);
       // console.log(response.description);
       // console.log("options="+options)
