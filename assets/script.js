@@ -33,7 +33,15 @@ $(document).ready(function() {
       "MM-DD-YYYY",
       true
     );
-    console.log("bday = " + bday);
+    curyear = moment().year();
+    tbday = bday.year(curyear);
+    console.log("bday = " + bday, "tbday = " + tbday);
+    console.log(tbday.format(moment.HTML5_FMT.DATE));
+
+    $("#countdown").attr(
+      "uk-countdown",
+      "date: " + tbday.format(moment.HTML5_FMT.DATE)
+    );
 
     saveInputtoLS1();
 
