@@ -36,10 +36,13 @@ $(document).ready(function(){
  
 
 
+
+
+// Background repeat
 var totalCount = 6;
 function ChangeIt() 
 {
 var num = Math.ceil( Math.random() * totalCount );
 document.body.background = 'images/bg/'+num+'.jpg';
-document.body.style.backgroundRepeat = "repeat";// Background repeat
+document.body.style.backgroundRepeat = "repeat";
 }
