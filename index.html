@@ -16,8 +16,12 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit-icons.min.js"></script>
     
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://unpkg.com/moment-lunar@0.0.4/moment-lunar.min.js"></script>
     <!--Scripts-->
-    <script src="assets/custom1.js"></script>
+    <script src="assets/script.js"></script>
+    <!-- <script src="assets/custom1.js"></script> -->
     
 </head>
 
@@ -44,6 +48,7 @@
                 <a class="uk-button uk-button-default" href="#modal-center-setup" uk-toggle>
                     <h1>Setup</h2>
                 </a>
+                
                 <div id="modal-center-setup" class="uk-flex-top" uk-modal>
                     <div class="uk-modal-dialog uk-modal-body  uk-margin-auto-vertical">
                         <button class="uk-modal-close-default" type="button" uk-close></button>
@@ -57,36 +62,36 @@
                                         
 
                                         <!--Birth Info-->
-                                        <fieldset class=“uk-fieldset”>
-                                            <legend class=“uk-legend”>When is your Birthday?
+                                        <fieldset class="uk-fieldset">
+                                            <legend class="uk-legend">When is your Birthday?
                                             </legend>
                                             <br>
-                                            <div class=“uk-margin uk-width-1-2 uk-display-inline”>
+                                            <div class="uk-margin uk-width-1-2 uk-display-inline">
                                                 
                                                 
                                                 <!-- Month Field -->
-                                                <div class=“uk-margin”>
-                                                    <legend class=“uk-legend”>Month
+                                                <div class="uk-margin">
+                                                    <legend class="uk-legend">Month
                                                     </legend>
-                                                    <input class=“uk-input” type=“text” id=“bday-month”
-                                                        placeholder=“MM”>
+                                                    <input class="uk-input" type="text" id="bday-month"
+                                                        placeholder="MM">
                                                 </div>
 
 
                                                 <!-- Day Field -->
-                                                <div class=“uk-margin”>
-                                                    <legend class=“uk-legend”>Day
+                                                <div class="uk-margin">
+                                                    <legend class="uk-legend">Day
                                                     </legend>
-                                                    <input class=“uk-input” type=“text” id=“bday-day” placeholder=“DD”>
+                                                    <input class="uk-input" type="text" id="bday-day" placeholder="DD">
                                                 </div>
 
 
                                                 <!-- Year Field -->
-                                                <div class=“uk-margin”>
-                                                    <legend class=“uk-legend”>Year
+                                                <div class="uk-margin">
+                                                    <legend class="uk-legend">Year
                                                     </legend>
-                                                    <input class=“uk-input” type=“text” id=“bday-year”
-                                                        placeholder=“YYYY”>
+                                                    <input class="uk-input" type="text" id="bday-year"
+                                                        placeholder="YYYY">
                                                 </div>
                                             </div>
 
@@ -95,34 +100,34 @@
 
                                         
                                         <!--Location Data-->
-                                        <fieldset class=“uk-fieldset”>
-                                            <legend class=“uk-legend”>Where are you currently living?
+                                        <fieldset class="uk-fieldset">
+                                            <legend class="uk-legend">Where are you currently living?
                                             </legend>
                                             <br>
-                                            <div class=“uk-margin uk-width-1-2 uk-display-inline”>
+                                            <div class="uk-margin uk-width-1-2 uk-display-inline">
                                                 
                                                 
                                                 <!-- City Data -->
-                                                <legend class=“uk-legend”>City
+                                                <legend class="uk-legend">City
                                                 </legend>
-                                                <div class=“uk-margin”>
-                                                    <input class=“uk-input” type=“text” id=“city”>
+                                                <div class="uk-margin">
+                                                    <input class="uk-input" type="text" id="city">
                                                 </div>
                                                 
                                                 
                                                 <!-- State Data -->
-                                                <legend class=“uk-legend”>State
+                                                <legend class="uk-legend">State
                                                 </legend>
-                                                <div class=“uk-margin”>
-                                                    <input class=“uk-input” type=“text” id=“state”>
+                                                <div class="uk-margin">
+                                                    <input class="uk-input" type="text" id="state">
                                                 </div>
                                             </div>
                                         </fieldset>
                                         <!--End Location-->
 
 
-                                        <div class=“uk-margin-top uk-width-1-2”>
-                                            <button class=“uk-button .uk-align-right” id=“sign-up”>Submit</button>
+                                        <div class="uk-margin-top uk-width-1-2">
+                                            <button class="uk-button uk-align-right uk-modal-close" id="setup-submit">Submit</button>
                                         </div>
                                 </form>
                             </div>
@@ -404,5 +409,20 @@
     </div><!-- end background image-->
 
 </body>
+// this loads the localStorage values back into form
+  <script>
+                    console.log(localStorage.getItem("month"));
+                    $("#bday-month").val(localStorage.getItem("month"));
+                    // console.log($("#bday-month").val())
+                    console.log(localStorage.getItem("day"));
+                    $("#bday-day").val(localStorage.getItem("day"));
+                    console.log(localStorage.getItem("year"))
+                    $("#bday-year").val(localStorage.getItem("year"))
+                    console.log(localStorage.getItem("city"))
+                    $("#city").val(localStorage.getItem("city"))
+                    console.log(localStorage.getItem("state"))
+                    $("#state").val(localStorage.getItem("state"))
+                </script>
+             
 
 </html>
