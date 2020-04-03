@@ -1,6 +1,9 @@
 // Once document is loaded
 var resp = "";
 var bday, astrosign, czodiac, keyword, sentiment;
+var owmapikey = "8164cdd41308f159d85ff4ef8f3b5171"; // openweathermap.org
+var breezokey = "a7204a3f724a470fb35ad085b72fdba7"; //breezometer.com
+var curlat, curlon; // need it for UV, BreezoMeter, Pollen
 
 $(document).ready(function() {
   //   var horoscope = "";
@@ -20,6 +23,7 @@ $(document).ready(function() {
   }
 
   function updateTiles1() {
+    saveInputtoLS1();
     bday = moment(
       //   $("#bday").val()
       localStorage.getItem("month") +
@@ -27,12 +31,18 @@ $(document).ready(function() {
         localStorage.getItem("day") +
         "-" +
         localStorage.getItem("year"),
-      "MM-DD-YYYY",
-      true
+      "MM-DD-YYYY"
     );
-    console.log("bday = " + bday);
 
-    saveInputtoLS1();
+    curyear = moment().year();
+    tbday = bday.year(curyear);
+    console.log("bday = " + bday, "tbday = " + tbday);
+    console.log(tbday.format(moment.HTML5_FMT.DATE));
+
+    $("#countdown").attr(
+      "uk-countdown",
+      "date: " + tbday.format(moment.HTML5_FMT.DATE)
+    );
 
     astrosign = getZodiac(bday);
     console.log("astrosign=" + astrosign);
@@ -59,9 +69,11 @@ $(document).ready(function() {
     $("#app3").text(" is your word of the day");
 
     // sentiment now has sentiment from horoscope
+  }
 
-    $("h2#modal4").text(sentiment);
-    $("#app4").text(" is your sentiment of the day");
+  function getDataBoth2(curlat, curlon) {
+    getBreezometerAQI(curlat, curlon);
+    getPollenForecast(curlat, curlon);
   }
 
   function updateTiles2() {
@@ -91,12 +103,10 @@ $(document).ready(function() {
       );
       return;
     } else {
+      saveInputtoLS2();
       // get weather
-
-      queryCurrentWeather(tcity);
-
-      // get AQI
-      // get pollen
+      queryCurrentWeather(tcity, tstate, getDataBoth2);
+      // the callback get AQI and get pollen
     }
   }
 
@@ -110,14 +120,14 @@ $(document).ready(function() {
         $("#bday-day").val() +
         "-" +
         $("#bday-year").val(),
-      "MM-DD-YYYY",
-      true
+      "MM-DD-YYYY"
     );
 
     if (!bday.isValid()) {
       alert("Date entered is not valid!");
     } else {
       updateTiles1();
+      updateTiles2();
     }
   });
 
@@ -227,7 +237,7 @@ $(document).ready(function() {
   function getSentiment() {
     console.log("resp2 = " + resp);
     token = "8921d8d3e0274f0997aa91de967aca75";
-
+    var sentiment = "";
     queryURL3 =
       "https://api.dandelion.eu/datatxt/sent/v1/?text=" +
       encodeURI(resp) +
@@ -243,7 +253,21 @@ $(document).ready(function() {
       console.log(response.sentiment.type);
       $("h2#modal4").text(response.sentiment.type);
       $("#app4").text(" is your sentiment of the day");
-
+      sentiment = response.sentiment.type;
+      $("h2#modal4").removeClass(
+        "uk-text-success uk-text-warning uk-text-danger"
+      ); // remove previous text colors, if any
+      if (sentiment === "positve") {
+        $("h2#modal4").addClass("uk-text-success");
+      }
+      if (sentiment === "neutral") {
+        $("h2#modal4").addClass("uk-text-primary");
+      }
+      if (sentiment === "negative") {
+        $("h2#modal4").addClass("uk-text-danger");
+      }
+      $("#app4").text(" is your sentiment of the day");
+      //  changing box color
       return response.sentiment.type;
     });
   }
@@ -339,15 +363,12 @@ $(document).ready(function() {
   // var zodiac = chineseZodiac("1970-01-01");
 
   // stuff for
-  var owmapikey = "8164cdd41308f159d85ff4ef8f3b5171"; // openweathermap.org
-  var breezokey = "a7204a3f724a470fb35ad085b72fdba7"; //breezometer.com
-  var curlat, curlon; // need it for UV, BreezoMeter, Pollen
 
   function kelvinToFahrenheit(kelvin) {
     return (kelvin - 273.15) * 1.8 + 32;
   }
 
-  function queryCurrentWeather(inCity) {
+  function queryCurrentWeather(inCity, inState, callback) {
     console.log(inCity);
 
     var retWeather = {
@@ -361,7 +382,9 @@ $(document).ready(function() {
 
     var queryurl1 =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
-      inCity +
+      encodeURI(inCity) +
+      "," +
+      encodeURI(inState) +
       "&appid=" +
       owmapikey;
 
@@ -379,11 +402,13 @@ $(document).ready(function() {
       // var curcity = res.name;
       // $("#curcity").text(res.name);
       retWeather.cityName = res.name;
+      $("h2#modal5").text(res.name);
 
       var curdate = new Date(res.dt * 1000);
       console.log(curdate);
       // $("#curdate").text(curdate.toLocaleDateString("en-US"));
       retWeather.curDate = curdate.toLocaleDateString("en-US");
+      var thtml = "<h2>" + curdate.toLocaleDateString("en-US") + "</h2>";
 
       var iconweather = res.weather[0].icon; // how to convert that to real icon?
       console.log(iconweather);
@@ -395,6 +420,11 @@ $(document).ready(function() {
       retWeather.iconWeatherUrl =
         "http://openweathermap.org/img/wn/" + iconweather + "@2x.png";
 
+      thtml +=
+        "<P><img src='http://openweathermap.org/img/wn/" +
+        iconweather +
+        "@2x.png' /></P>";
+
       // var curtemp = res.main.temp; // convert from kelvin
       var fahsymbol = "&deg F";
       // $("#curtemp").html(
@@ -405,20 +435,35 @@ $(document).ready(function() {
         Math.round(kelvinToFahrenheit(res.main.temp) * 10) / 10 +
         decodeURIComponent(fahsymbol);
 
+      thtml +=
+        "<P>" +
+        Math.round(kelvinToFahrenheit(res.main.temp) * 10) / 10 +
+        decodeURIComponent(fahsymbol) +
+        "</P>";
+
       // var curhumid = res.main.humidity; // add percentage sign
       // $("#curhumid").text(res.main.humidity + "%");
       retWeather.curHumid = res.main.humidity + "%";
+
+      thtml += "<p>" + res.main.humidity + "%" + "</p>";
 
       // var curwind = res.wind.speed; // velocity only?
       // $("#curwind").text(Math.round(res.wind.speed * 10) / 10 + " MPH");
       retWeather.curWind = Math.round(res.wind.speed * 10) / 10 + " MPH";
 
+      thtml += "<p>" + Math.round(res.wind.speed * 10) / 10 + " MPH</p>";
+      // set the cell text
+
       // we're recording the lat-lon for the UV reading
+      $("#app5").html(thtml);
+
       curlat = res.coord.lat;
       curlon = res.coord.lon;
 
       console.log(retWeather);
       console.log(curlat + " / " + curlon);
+
+      callback(curlat, curlon);
       return retWeather;
     });
   }
@@ -443,6 +488,10 @@ $(document).ready(function() {
       // options = response.description;
       resp = response.data.indexes.baqi.aqi;
       console.log(resp);
+
+      $("h2#modal6").text("Your local Air Quality Index");
+      $("#app6").text(resp);
+
       return resp;
       // callback();
     });
@@ -451,6 +500,7 @@ $(document).ready(function() {
   function getPollenForecast(curlat, curlon) {
     // see https://docs.breezometer.com/api-documentation/pollen-api/v2/#request-parameters
 
+    var thtml = "";
     var queryURLb =
       "https://api.breezometer.com/pollen/v2/forecast/daily?lat=" +
       curlat +
@@ -470,6 +520,33 @@ $(document).ready(function() {
       console.log(response);
       resp = response.data[0].types;
       console.log(resp);
+
+      $("h2#modal7").text("Your local pollen data");
+
+      try {
+        txt = "<P>Grass pollen data = " + resp.grass.index.value + "</P>";
+        thtml += txt;
+        console.log(thtml);
+      } catch (err) {
+        console.log("no grass pollen info / " + thtml);
+      }
+
+      try {
+        txt = "<P>Tree pollen data = " + resp.tree.index.value + "</P>";
+        thtml += txt;
+        console.log(thtml);
+      } catch (err) {
+        console.log("no tree pollen info / " + thtml);
+      }
+
+      try {
+        txt = "<P>Weed pollen data = " + resp.weed.index.value + "</P>";
+        thtml += txt;
+        console.log(thtml);
+      } catch (err) {
+        console.log("no weed pollen info / " + thtml);
+      }
+      $("#app7").html(thtml);
       return resp;
       // callback();
     });
