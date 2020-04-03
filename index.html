@@ -27,8 +27,7 @@
 
 <body>
     <!--background image-->
-    <div class="uk-background-fixed uk-background-cover uk-height-viewport uk-light" data-src="assets/images/bg1.jpg"
-        uk-img>
+    <div class="uk-background-fixed uk-background-cover uk-height-viewport uk-light"         uk-img>
     
     <!-- <script type="text/javascript"> 
         ChangeIt();
@@ -410,19 +409,30 @@
 
 </body>
 // this loads the localStorage values back into form
-  <script>
-                    console.log(localStorage.getItem("month"));
-                    $("#bday-month").val(localStorage.getItem("month"));
-                    // console.log($("#bday-month").val())
-                    console.log(localStorage.getItem("day"));
-                    $("#bday-day").val(localStorage.getItem("day"));
-                    console.log(localStorage.getItem("year"))
-                    $("#bday-year").val(localStorage.getItem("year"))
-                    console.log(localStorage.getItem("city"))
-                    $("#city").val(localStorage.getItem("city"))
-                    console.log(localStorage.getItem("state"))
-                    $("#state").val(localStorage.getItem("state"))
-                </script>
+<script>
+    console.log(localStorage.getItem("month"));
+    $("#bday-month").val(localStorage.getItem("month"));
+    // console.log($("#bday-month").val())
+    console.log(localStorage.getItem("day"));
+    $("#bday-day").val(localStorage.getItem("day"));
+    console.log(localStorage.getItem("year"))
+    $("#bday-year").val(localStorage.getItem("year"))
+    console.log(localStorage.getItem("city"))
+    $("#city").val(localStorage.getItem("city"))
+    console.log(localStorage.getItem("state"))
+    $("#state").val(localStorage.getItem("state"))
+
+    // and this randomizes the background
+
+    // note: as of now, there's bg1 through bg6
+    var bgrandom = Math.floor(Math.random() * 5)+1;
+    document.body.background = "assets/images/bg" + bgrandom + ".jpg";
+    console.log("background = "+"assets/images/bg" + bgrandom + ".jpg");
+    document.body.style.backgroundRepeat = "repeat";// Background repeat
+
+
+
+</script>
              
 
 </html>
