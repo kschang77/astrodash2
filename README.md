@@ -19,13 +19,21 @@ https://kschang77.github.io/astrodash2/
 
 ## Screenshots
 
+### Main screen
+
 ![Main Screen](assets/images/main.png)
+
+### Setup Screen
 
 ![Setup Screen](assets/images/setup.png)
 
+### Dashboard Screen
+
 ![Dashboard Screen](assets/images/dashboard.png)
 
-![Output Screen](assets/images/output.png)
+### Output Modal
+
+![Output Modal](assets/images/output.png)
 
 ## AstroDash was built with...
 
@@ -41,9 +49,9 @@ https://kschang77.github.io/astrodash2/
 
 [Moment-lunar](https://github.com/Luavis/moment-lunar) -- Chinese zodiac calculation
 
-[Dandelion API](https://dandelion.eu/docs/) == sentiment and keyword
+[Dandelion API](https://dandelion.eu/docs/) -- sentiment and keyword
 
-[Breezometer API](https://breezometer.com/) == air quality and pollen
+[Breezometer API](https://breezometer.com/) -- air quality and pollen
 
 ## Interesting Code Snippet
 
@@ -83,7 +91,7 @@ After a bit of checking, I was able to locate moment-lunar, a plug-in that added
 
 ## The secret history of AstroDash
 
-### At the Beginning...
+### The Beginning...
 
 Originally, this was supposed to be a graphical parcel tracking app where I pull a parcel's tracking info, and graph them on a map API. However, when Rand objected rather vociferously for not having any input on the matter, Nadine and I decided to look over our old project ideas to see if there's anything he liked. And after going through 7-8 ideas, he seems to like Astrological Dashboard, and thus, AstroDash is born.
 
@@ -115,15 +123,25 @@ Over the next 7 or so hours I fixed most of the bugs and implement the features 
 
 After the class is over I fixed the logo with true transparency. So it doesn't look like a glob of black in the middle.
 
+### Limits and Workarounds
+
+#### UIKit limitations
+
+UIKit seems resistant to allow the user to set the background of an element... there is NO provision for it. The original plan for the sentiment (positive, neutral, or negative) was to color the background of the horoscope box. However, searching through the docs shows that there is no provision to set element's background to a custom color. Instead, [there are only four choices](https://getuikit.com/docs/background): default, muted, primary and secondary. While one could utilize a custom stylesheet, it seems a bit of an overkill for one feature.
+
+#### API and CORS/CORB
+
+During the API evaluation phase, quite a bit of time was lost trying to get past the CORS/CORB problem. CORS (cross origin resource sharing) / CORB (cross origin resource blocking) are a set of security policies that allows or blocks outside access. Some APIs were not implemented properly and thus were blocked by CORS/CORB filter. A full explanation of CORS is beyond the scope of this README.
+
 ## Stretch Goals / Future Development
 
 The setup does not quite work at the moment. One of the merges seems to have broken it, or somewhere between 3AM and now I screwed it up. I am still trying to debug it.
 
-There was STILL no validation on the form input fields. I had shown the team Jvalidate for JQuery a week ago.
+There was STILL no validation on the form input fields, despite demo-ing jvalidate (for JQuery) to the team several days ago (and I incorporated it into NYTSearch, the previous team activity, as a demo).
 
 Some advice on the Chinese Zodiac could be added. Right now, it just tells you what Chinese zodiac you are. Haven't found an API for that yet. Will probalby have to use a static table.
 
-The lower left countdown is now a muted gray instead of proper white, and I can't figure out why. I turned it cyan for slightly better contrast, but it seems to be a uikit problem.
+~~The lower left countdown is now a muted gray instead of proper white, and I can't figure out why. I turned it cyan for slightly better contrast, but it seems to be a uikit problem.~~ Found the problem. Someone removed .uk-light from the counter. It was there before.
 
 The proposed Giphy button, the generated playlist, or the moon-phase button was never implemented. There are two buttons hidden at this time that may be utilized.
 
@@ -134,10 +152,12 @@ The proposed Giphy button, the generated playlist, or the moon-phase button was 
 - [Link to Github](https://github.com/kschang77)
 - [Link to LinkedIn](https://www.linkedin.com/in/kasey-chang)
 
+With additional design by Rand Hunt and Nadine Bundschuh
+
 ## License
 
 This project is licensed under the MIT License
 
 ## Acknowledgments
 
-Hat tip to Nandine, Rant for teamwork, and Jerome, Kerwin, Mahi, and the UCBEx Coding Bootcamp March 2020 cohort
+Hat tip to Nadine and Rand for "teamwork", and Jerome, Kerwin, Mahi, and the UCBEx Coding Bootcamp March 2020 cohort
