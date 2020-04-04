@@ -1,6 +1,6 @@
 # astro-dash
 
-AstroDash is a daily morning dashboard that will allow the user to setup with birthday and location (city and state) so it can fetch horoscope, Chinese Zodiac, Daily Word, Sentiment, (both extracted from horoscope), Local Whether, Air Quality Index, and Pollen Info through the use of several APIs.
+AstroDash is a daily morning dashboard that will allow the user to setup with birthday and location (city and state) so it can fetch horoscope, Chinese Zodiac, Daily Word, Sentiment, (both extracted from the daily horoscope), Local Weather, Air Quality Index, and Pollen Info through the use of several APIs.
 
 ## Notable features
 
@@ -8,7 +8,6 @@ AstroDash is a daily morning dashboard that will allow the user to setup with bi
 - Extensive use of third-party API
 - Random background (out of 6)
 - Setup values are saved into localstroage and reused
--
 
 ## Project Repo
 
@@ -36,15 +35,15 @@ https://kschang77.github.io/astrodash2/
 
 [UIKit](https://getuikit.com/) -- overall UI
 
-[OpenWeather API -- weather info](https://openweathermap.org/api)
+[OpenWeather API](https://openweathermap.org/api) -- weather info
 
-[Moment.js (general date functions)](https://momentjs.com/)
+[Moment.js](https://momentjs.com/) --general date functions
 
-[Moment-lunar (Chinese zodiac calculation)](https://github.com/Luavis/moment-lunar)
+[Moment-lunar](https://github.com/Luavis/moment-lunar) -- Chinese zodiac calculation
 
-[Dandelion API (sentiment and keyword)](https://dandelion.eu/docs/)
+[Dandelion API](https://dandelion.eu/docs/) == sentiment and keyword
 
-[Breezometer API (air quality and pollen)](https://breezometer.com/)
+[Breezometer API](https://breezometer.com/) == air quality and pollen
 
 ## Interesting Code Snippet
 
@@ -94,19 +93,19 @@ However, after several hours checking each and every Horoscope API listed at Pro
 
 Of the remaining two, one was an "unofficial API" (i.e. dubious legality). We passed on that one as well.
 
-With only one API left to use, clear the idea was a no-go. And we had to pivot quickly. We decided to keep the dashboard idea and just add more function tiles, with only one horoscope, but attempt to wrestle a bit more meaning out of it with the sentiment and keyword analysis.
+With only one API left to use, clearly the idea was a no-go. And we had to pivot quickly. We decided to keep the dashboard idea and just add more function tiles, with only one horoscope, but attempt to wrestle a bit more meaning out of it with the sentiment and keyword analysis.
 
 ### The Pivot
 
-At this point, it was clear that Rand wanted to play with the UI, and I'm better at the backend. Nadine acted as a go-between and technical writer. However, there really was no specifications. In fact, I didn't know what the app was going to look like until... Thursday. I can work on the backend and experiment with the AJAX calls, but basically, ALL of the button integration was done Friday morning, started at 3AM, just before the presentation.
+At this point, Rand wanted to play with the UI, and I'm better at the backend. Nadine acted as a go-between and technical writer. However, there really was no specifications. In fact, I didn't know what the app was going to look like until... Thursday. I can work on the backend and experiment with the AJAX calls, but basically, ALL of the button integration was done Friday morning, started at 3AM, just before the presentation.
 
-And what I got was a mess. There were ZERO functionality except the buttons make a modal dialog pop up. And that's it. None of the dialog had any content. Only some of the dialog have ID for info pushing. And none of Rand's proposed features, such as a timer that counts down to the birthday (lower left corner) and the randomized background were working.
+And what I got was just a shell. There were ZERO functionality except the buttons make a modal dialog pop up. And that's it. None of the dialog had any content. Only some of the dialog have ID for info pushing. And none of extra features, such as a timer that counts down to the birthday (lower left corner) and the randomized background were working.
 
 And as I have received ZERO briefing about UIKit, I had to solve my own problems. Fortunately, they are rather small.
 
 ### The Marathon Session
 
-Over the next 7 hours I managed to fix most of Rand's bugs and implement the features properly, as well as hook in the various APIs and functions.
+Over the next 7 or so hours I fixed most of the bugs and implement the features properly, as well as hook in the various APIs and functions.
 
 - Setup Modal Box, save input to localStorage -- by 0409
 - Random background -- fixed at 0455
@@ -118,11 +117,11 @@ After the class is over I fixed the logo with true transparency. So it doesn't l
 
 ## Stretch Goals / Future Development
 
-The setup does not quite work. One of the merges seems to have broken it, or somewhere between 3AM and now I screwed it up.
+The setup does not quite work at the moment. One of the merges seems to have broken it, or somewhere between 3AM and now I screwed it up. I am still trying to debug it.
 
-Despite pleading both members to look into adding validation to the setup form for the entire week, while I work on the main logic, nothing was done.
+There was STILL no validation on the form input fields. I had shown the team Jvalidate for JQuery a week ago.
 
-Some advice on the Chinese Zodiac could be added. Right now, it just tells you what Chinese zodiac you are. Haven't found an API for that yet.
+Some advice on the Chinese Zodiac could be added. Right now, it just tells you what Chinese zodiac you are. Haven't found an API for that yet. Will probalby have to use a static table.
 
 The lower left countdown is now a muted gray instead of proper white, and I can't figure out why. I turned it cyan for slightly better contrast, but it seems to be a uikit problem.
 
@@ -130,7 +129,7 @@ The proposed Giphy button, the generated playlist, or the moon-phase button was 
 
 ## Author
 
-**Kasey Chang**
+### Kasey Chang
 
 - [Link to Github](https://github.com/kschang77)
 - [Link to LinkedIn](https://www.linkedin.com/in/kasey-chang)
@@ -141,4 +140,4 @@ This project is licensed under the MIT License
 
 ## Acknowledgments
 
-- Hat tip to Nandine, Rant for teamwork, and Jerome, Kerwin, Mahi, and the UCBEx Coding Bootcamp March 2020 cohort
+Hat tip to Nandine, Rant for teamwork, and Jerome, Kerwin, Mahi, and the UCBEx Coding Bootcamp March 2020 cohort
