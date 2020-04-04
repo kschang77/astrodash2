@@ -2,9 +2,31 @@
 
 AstroDash is a daily morning dashboard that will allow the user to setup with birthday and location (city and state) so it can fetch horoscope, Chinese Zodiac, Daily Word, Sentiment, (both extracted from horoscope), Local Whether, Air Quality Index, and Pollen Info through the use of several APIs.
 
+## Notable features
+
+- Modal dialogs using UIKit
+- Extensive use of third-party API
+- Random background (out of 6)
+- Setup values are saved into localstroage and reused
+-
+
 ## Project Repo
 
+https://github.com/kschang77/astrodash2
+
 ## Deployed Link
+
+https://kschang77.github.io/astrodash2/
+
+## Screenshots
+
+![Main Screen](assets/images/main.png)
+
+![Setup Screen](assets/images/setup.png)
+
+![Dashboard Screen](assets/images/dashboard.png)
+
+![Output Screen](assets/images/output.png)
 
 ## AstroDash was built with...
 
@@ -26,7 +48,7 @@ AstroDash is a daily morning dashboard that will allow the user to setup with bi
 
 ## Interesting Code Snippet
 
-After checking various code snippets to calculate Chinese zodiac, most of them are wrong 1/6th of the time. The so,[;e algorithms simply use the year for determination, neglecting to account for the year start difference. Lunar new year generally start in February of solar year, so people who are born between Jan 1 and Lunar New Year (aka Chinese New Year) will have the WRONG Chinese Zodiac with the simple algorithm. To get an accurate result, I had to write my own.
+After checking various code snippets to calculate Chinese zodiac, most of them are wrong 1/10th of the time. The simple algorithms simply use the year for determination, neglecting to account for the year start difference. Lunar new year generally start in February of solar year, so people who are born between Jan 1 and Lunar New Year (aka Chinese New Year) will have the WRONG Chinese Zodiac with the simple algorithm. To get an accurate result, I had to write my own.
 
 There are two approaches to take: either I can build a giant lookup table that contain the different start and end dates for each lunar new year, and the corresponding signs... Or I can locate a solar to lunar (and back) conversion library, use that to calculate the lunar year of the birthdate, then calculate the Chinese zodiac from that.
 
