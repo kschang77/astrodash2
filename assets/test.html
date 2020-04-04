@@ -1,0 +1,25 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://unpkg.com/moment-lunar@0.0.4/moment-lunar.min.js"></script>
+
+<script>
+  // for every year from 1924 to 2020
+
+  var totaldiff = 0.0;
+  var j = 0;
+
+  for (var i = 1924; i <= 2020; i++) {
+    j++;
+    // we take 01-01-YYYY
+    var tdate = moment("01-01-" + i);
+    // get lunar new year's day and convert it to solar
+    var tlunarNewYears = moment().year(i).month(0).date(1).solar();
+    // get the difference in days
+    var tdiff = tlunarNewYears.diff(tdate, "days");
+    var tpercent = (tdiff / 365.25) * 100;
+    console.log(i + " diff = " + tdiff + " error of " + tpercent + "%");
+    totaldiff += tdiff;
+  }
+
+  console.log("Total error " + totaldiff);
+  console.log("over " + j + " years, average = " + totaldiff / j);
+</script>

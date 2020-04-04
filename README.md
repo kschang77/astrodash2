@@ -13,6 +13,8 @@ AstroDash is a daily morning dashboard that will allow the user to setup with bi
 
 https://github.com/kschang77/astrodash2
 
+NOTE: Rand was the original maintainer, but he claimed his original repo, astrodash, was all messed up that he created astrodash2. This is a fork off that and incorporates various fixes not in his version.
+
 ## Deployed Link
 
 https://kschang77.github.io/astrodash2/
@@ -20,6 +22,8 @@ https://kschang77.github.io/astrodash2/
 ## Screenshots
 
 ### Main screen
+
+NOTE: The countdown clock color issue has been fixed. It's now white again.
 
 ![Main Screen](assets/images/main.png)
 
@@ -45,11 +49,11 @@ https://kschang77.github.io/astrodash2/
 
 [OpenWeather API](https://openweathermap.org/api) -- weather info
 
-[Moment.js](https://momentjs.com/) --general date functions
+[Moment.js](https://momentjs.com/) --general date functions and validations
 
 [Moment-lunar](https://github.com/Luavis/moment-lunar) -- Chinese zodiac calculation
 
-[Dandelion API](https://dandelion.eu/docs/) -- sentiment and keyword
+[Dandelion API](https://dandelion.eu/docs/) -- sentiment and keyword extraction
 
 [Breezometer API](https://breezometer.com/) -- air quality and pollen
 
@@ -127,11 +131,13 @@ After the class is over I fixed the logo with true transparency. So it doesn't l
 
 #### UIKit limitations
 
-UIKit seems resistant to allow the user to set the background of an element... there is NO provision for it. The original plan for the sentiment (positive, neutral, or negative) was to color the background of the horoscope box. However, searching through the docs shows that there is no provision to set element's background to a custom color. Instead, [there are only four choices](https://getuikit.com/docs/background): default, muted, primary and secondary. While one could utilize a custom stylesheet, it seems a bit of an overkill for one feature.
+UIKit seems resistant to allow the user to set the background of an element... there is NO provision for it. The original plan for the sentiment (positive, neutral, or negative) was to color the background of the horoscope box. However, searching through the docs shows that there is no provision to set element's background to a custom color. Instead, [there are only four choices](https://getuikit.com/docs/background): default, muted, primary and secondary. While one could utilize a custom stylesheet, it seems a bit of an overkill for one feature. We ended up just coloring the headline.
 
 #### API and CORS/CORB
 
-During the API evaluation phase, quite a bit of time was lost trying to get past the CORS/CORB problem. CORS (cross origin resource sharing) / CORB (cross origin resource blocking) are a set of security policies that allows or blocks outside access. Some APIs were not implemented properly and thus were blocked by CORS/CORB filter. A full explanation of CORS is beyond the scope of this README.
+During the API evaluation phase, quite a bit of time was lost trying to get past the CORS/CORB problem. CORS (cross origin resource sharing) / CORB (cross origin resource blocking) are a set of security policies that allows or blocks outside access. Some APIs were not implemented properly and thus were blocked by browser's CORS/CORB filter. A full explanation of CORS is beyond the scope of this README.
+
+There are ways to bypass the CORS/CORB restrictions but it doesn't always work. And we decided our time is best spent elsewhere.
 
 ## Stretch Goals / Future Development
 
