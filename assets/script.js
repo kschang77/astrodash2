@@ -7,8 +7,16 @@ var curlat, curlon; // need it for UV, BreezoMeter, Pollen
 
 $(document).ready(function () {
   //   var horoscope = "";
-  updateTiles1();
-  updateTiles2();
+  if (localStorage.getItem("month") !== null) {
+    updateTiles1();
+  } else {
+    // hide the timer
+    $("#countdown").addClass("uk-hidden");
+  }
+
+  if (localStorage.getItem("city") !== null) {
+    updateTiles2();
+  }
 
   function saveInputtoLS1() {
     // saves the various input fields to LocalStorage
@@ -23,7 +31,6 @@ $(document).ready(function () {
   }
 
   function updateTiles1() {
-    saveInputtoLS1();
     bday = moment(
       //   $("#bday").val()
       localStorage.getItem("month") +
@@ -35,14 +42,19 @@ $(document).ready(function () {
     );
 
     curyear = moment().year();
-    tbday = bday.year(curyear);
+    tbday = moment(bday);
+    tbday = tbday.year(curyear);
     console.log("bday = " + bday, "tbday = " + tbday);
     console.log(tbday.format(moment.HTML5_FMT.DATE));
 
+    // update clock to count to the right date
     $("#countdown").attr(
       "uk-countdown",
       "date: " + tbday.format(moment.HTML5_FMT.DATE)
     );
+
+    // make it visible
+    $("#countdown").removeClass("uk-hidden");
 
     astrosign = getZodiac(bday);
     console.log("astrosign=" + astrosign);
@@ -78,8 +90,8 @@ $(document).ready(function () {
 
   function updateTiles2() {
     // tries to read city/state from localstorage
-    localStorage.setItem("city", $("#city").val());
-    localStorage.setItem("state", $("#state").val());
+    // localStorage.setItem("city", $("#city").val());
+    // localStorage.setItem("state", $("#state").val());
 
     var tcity = localStorage.getItem("city");
     var tstate = localStorage.getItem("state");
@@ -110,7 +122,7 @@ $(document).ready(function () {
     }
   }
 
-  //birthday submit
+  //setup submit
   $("#setup-submit").on("click", function (event) {
     event.preventDefault();
     bday = moment(
@@ -125,10 +137,19 @@ $(document).ready(function () {
 
     if (!bday.isValid()) {
       alert("Date entered is not valid!");
-    } else {
-      updateTiles1();
-      updateTiles2();
+      return;
     }
+    // save the bday to localstorage
+    saveInputtoLS1();
+    // update the b-day dependent tiles
+    updateTiles1();
+
+    // some sort of validate for city/state
+    // none at the moment
+    // save the input to localstorage
+    saveInputtoLS2();
+    // update the city dependent tiles
+    updateTiles2();
   });
 
   function getZodiac(indate) {

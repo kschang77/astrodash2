@@ -1,23 +1,26 @@
-# astro-dash
+# Astrodash
 
 AstroDash is a daily morning dashboard that will allow the user to setup with birthday and location (city and state) so it can fetch horoscope, Chinese Zodiac, Daily Word, Sentiment, (both extracted from the daily horoscope), Local Weather, Air Quality Index, and Pollen Info through the use of several APIs.
 
 ## Notable features
 
-- Modal dialogs using UIKit
-- Extensive use of third-party API
-- Random background (out of 6)
-- Setup values are saved into localstroage and reused
+- Modal dialogs using UIKit (by Rand, polish by Kasey)
+- Logo (created by Rand, inverted/transparent'ed by Kasey)
+- Extensive use of third-party API (Kasey and Nadine on research, Kasey on implementation)
+- Random background (out of 6) (proposed by Rand, implemented by Kasey)
+- Setup values are saved into localstroage and reused (by Kasey)
+- Countdown to birthday counter (implemented by Kasey)
+- Counter is now hidden UNTIL Setup was run. (by Kasey)
 
 ## Project Repo
 
-https://github.com/kschang77/astrodash2
+[https://github.com/kschang77/astrodash2](https://github.com/kschang77/astrodash2)
 
-NOTE: Rand was the original maintainer, but he claimed his original repo, astrodash, was all messed up that he created astrodash2. This is a fork off that and incorporates various fixes not in his version.
+NOTE: Rand was the repo master, but he claimed his original repo, astrodash, was all messed up that he created astrodash2. This is a fork off that and incorporates various fixes not in his version.
 
 ## Deployed Link
 
-https://kschang77.github.io/astrodash2/
+[https://kschang77.github.io/astrodash2/](https://kschang77.github.io/astrodash2/)
 
 ## Screenshots
 
@@ -39,7 +42,7 @@ NOTE: The countdown clock color issue has been fixed. It's now white again.
 
 ![Output Modal](assets/images/output.png)
 
-## AstroDash was built with...
+## AstroDash was built with
 
 [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) -- general use
 
@@ -49,9 +52,9 @@ NOTE: The countdown clock color issue has been fixed. It's now white again.
 
 [OpenWeather API](https://openweathermap.org/api) -- weather info
 
-[Moment.js](https://momentjs.com/) --general date functions and validations
+[Moment.js](https://momentjs.com/) --general date functions
 
-[Moment-lunar](https://github.com/Luavis/moment-lunar) -- Chinese zodiac calculation
+[Moment-lunar](https://github.com/Luavis/moment-lunar) -- conversion to lunar calendar
 
 [Dandelion API](https://dandelion.eu/docs/) -- sentiment and keyword extraction
 
@@ -93,9 +96,13 @@ After a bit of checking, I was able to locate moment-lunar, a plug-in that added
             return tsign;
      }
 
+Most Chinese zodiac table start with the year of the rat, i.e. 1924. However, 1924 does not divide into 12 cleanly. Rather than trying to deal with an offset, I decided to rotate the table so the table starts on a year that is easily divisible by 12, which was 1920, year of the Monkey.
+
+More details are in the [Medium post](https://medium.com/@kschang777/ten-percent-of-you-in-the-west-have-the-wrong-chinese-zodiac-d3b4ba9c6b99), such as how I came up with the 10% figure.
+
 ## The secret history of AstroDash
 
-### The Beginning...
+### The Beginning
 
 Originally, this was supposed to be a graphical parcel tracking app where I pull a parcel's tracking info, and graph them on a map API. However, when Rand objected rather vociferously for not having any input on the matter, Nadine and I decided to look over our old project ideas to see if there's anything he liked. And after going through 7-8 ideas, he seems to like Astrological Dashboard, and thus, AstroDash is born.
 
@@ -127,6 +134,22 @@ Over the next 7 or so hours I fixed most of the bugs and implement the features 
 
 After the class is over I fixed the logo with true transparency. So it doesn't look like a glob of black in the middle.
 
+And I made more minor edits as well as polish this README.
+
+### Main Program
+
+App was event driven. The main problem encountered, being a rush job, was failed to adequately plan the event loops to deal with startup situations where NO data had been entered.
+
+What's supposed to happen is
+
+- Program tries to read saved birthday and city/state values.
+- Program repopulates the fields, even if they are blank
+- Upon document loaded, it checks if the required fields are populated
+  -- if populated, then Ajax calls will be made to fetch results
+- If setup was brought up, then upon SUBMIT the Ajax calls will be made.
+
+In reality, the events didn't actually quite happen this way. And that's a mess I have to untangle. It _was_ working at one point between 6AM and 10AM. Somehow the various merges seems to have broken it.
+
 ### Limits and Workarounds
 
 #### UIKit limitations
@@ -135,19 +158,31 @@ UIKit seems resistant to allow the user to set the background of an element... t
 
 #### API and CORS/CORB
 
-During the API evaluation phase, quite a bit of time was lost trying to get past the CORS/CORB problem. CORS (cross origin resource sharing) / CORB (cross origin resource blocking) are a set of security policies that allows or blocks outside access. Some APIs were not implemented properly and thus were blocked by browser's CORS/CORB filter. A full explanation of CORS is beyond the scope of this README.
+During the API evaluation phase, significant amount of time was lost trying to get past the CORS/CORB problem. CORS (cross origin resource sharing) / CORB (cross origin resource blocking) are a set of security policies that allows or blocks outside access to prevent code-insertion / man-in-the-middle attacks. A full explanation of CORS is beyond the scope of this README.
 
-There are ways to bypass the CORS/CORB restrictions but it doesn't always work. And we decided our time is best spent elsewhere.
+To put it succintly, some APIs were not implemented properly and thus were blocked by browser's CORS/CORB filter. There are ways to bypass the CORS/CORB restrictions but it doesn't always work. And we decided our time is best spent elsewhere.
+
+#### Moment.js quirks
+
+Using moment.js has its issues and quirks, and both caused some minor problems.
+
+- Moment.js "month" starts at 0, not 1, while day does start with 1. This caused some minor problems.
+
+- moment.js values are mutable. That means if you set a moment value to X, then do Y = X, and change X again, both X and Y will be changed. One must explicitly create a new moment value, not just a pointer to existing value. This caused a problem in the birthday calculation as I need both the original birthday AND a "birthday in current year" variable, and the calculations destroyed the original birthday. (see script.js 44-46)
 
 ## Stretch Goals / Future Development
 
-The setup does not quite work at the moment. One of the merges seems to have broken it, or somewhere between 3AM and now I screwed it up. I am still trying to debug it.
+~~The setup does not quite work at the moment. One of the merges seems to have broken it, or somewhere between 3AM and now I screwed it up. I am still trying to debug it.~~ Fixed, turns out moment objects are mutable, and I had to create new ones a different way, and fix sequence of some events.
 
 There was STILL no validation on the form input fields, despite demo-ing jvalidate (for JQuery) to the team several days ago (and I incorporated it into NYTSearch, the previous team activity, as a demo).
 
+It would be nice to validate the city and state values using a geocode API, and it appears that Mapbox has a free temporary geocoding API available for up to 100K uses per month.
+
+It would be nice to prevent users from clicking on "dash" before setup was run. And to automatically pop-up setup if there were no values to be read the first time.
+
 Some advice on the Chinese Zodiac could be added. Right now, it just tells you what Chinese zodiac you are. Haven't found an API for that yet. Will probalby have to use a static table.
 
-~~The lower left countdown is now a muted gray instead of proper white, and I can't figure out why. I turned it cyan for slightly better contrast, but it seems to be a uikit problem.~~ Found the problem. Someone removed .uk-light from the counter. It was there before.
+~~The lower left countdown is now a muted gray instead of proper white, and I can't figure out why. I turned it cyan for slightly better contrast, but it seems to be a uikit problem.~~ Found the problem. Someone removed .uk-light from the counter. It was there before. It is there now.
 
 The proposed Giphy button, the generated playlist, or the moon-phase button was never implemented. There are two buttons hidden at this time that may be utilized.
 
