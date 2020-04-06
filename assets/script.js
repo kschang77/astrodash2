@@ -9,6 +9,7 @@ $(document).ready(function () {
   //   var horoscope = "";
   if (localStorage.getItem("month") !== null) {
     updateTiles1();
+    updateTiles3();
   } else {
     // hide the timer
     $("#countdown").addClass("uk-hidden");
@@ -86,6 +87,34 @@ $(document).ready(function () {
   function getDataBoth2(curlat, curlon) {
     getBreezometerAQI(curlat, curlon);
     getPollenForecast(curlat, curlon);
+  }
+
+  // code based on Nadine Bundschuh's code renamed from
+  // commit 19459f9cf317b1d183d91722d887fad2e4485d76
+  function updateTiles3() {
+    var queryURL2 =
+      "https://cors-anywhere.herokuapp.com/http://sandipbgt.com/theastrologer/api/horoscope/" +
+      astrosign +
+      "/today/";
+    console.log("horo2query=" + queryURL2);
+    $.ajax({
+      // headers: {
+      //     "Access-Control-Allow-Origin": "*",
+      //     "Content-Type": "application/json"
+      //   },
+      // type: 'POST',
+      url: queryURL2,
+      method: "GET",
+      dataType: "json",
+    }).then(function (response) {
+      //  console.log(response);
+      //  console.log("hello");
+      console.log(response);
+      $("h2#modal8").text(
+        "Your Second Horoscope from Kelli Fox, The Astrologer.com"
+      );
+      $("#app8").text(response.horoscope);
+    });
   }
 
   function updateTiles2() {
