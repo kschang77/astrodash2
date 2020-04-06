@@ -32,13 +32,19 @@ NOTE: The countdown clock color issue has been fixed. It's now white again.
 
 ### Setup Screen
 
-![Setup Screen](assets/images/setup.png)
+click (setup) in upper left to bring up the setup screen. 
+
+Screenshot removed due to privacy concerns. 
 
 ### Dashboard Screen
+
+Click (dash) in upper right corner to bring up "dashboard". 
 
 ![Dashboard Screen](assets/images/dashboard.png)
 
 ### Output Modal
+
+And the result(s) are displayed. 
 
 ![Output Modal](assets/images/output.png)
 
@@ -138,9 +144,9 @@ And I made more minor edits as well as polish this README.
 
 ### Main Program
 
-App was event driven. The main problem encountered, being a rush job, was failed to adequately plan the event loops to deal with startup situations where NO data had been entered.
+~~App was event driven. The main problem encountered, being a rush job, was failed to adequately plan the event loops to deal with startup situations where NO data had been entered.~~
 
-What's supposed to happen is
+~~What's supposed to happen is~~
 
 - Program tries to read saved birthday and city/state values.
 - Program repopulates the fields, even if they are blank
@@ -148,7 +154,7 @@ What's supposed to happen is
   -- if populated, then Ajax calls will be made to fetch results
 - If setup was brought up, then upon SUBMIT the Ajax calls will be made.
 
-In reality, the events didn't actually quite happen this way. And that's a mess I have to untangle. It _was_ working at one point between 6AM and 10AM. Somehow the various merges seems to have broken it.
+~~In reality, the events didn't actually quite happen this way. And that's a mess I have to untangle. It _was_ working at one point between 6AM and 10AM. Somehow the various merges seems to have broken it.~~ Program has been fixed. 
 
 ### Limits and Workarounds
 
