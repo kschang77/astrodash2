@@ -40,6 +40,8 @@ Screenshot removed due to privacy concerns.
 
 Click (dash) in upper right corner to bring up "dashboard".
 
+NOTE: An 8th button has been added. 
+
 ![Dashboard Screen](assets/images/dashboard.png)
 
 ### Output Modal
