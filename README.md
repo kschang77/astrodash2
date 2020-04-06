@@ -32,19 +32,19 @@ NOTE: The countdown clock color issue has been fixed. It's now white again.
 
 ### Setup Screen
 
-click (setup) in upper left to bring up the setup screen. 
+click (setup) in upper left to bring up the setup screen.
 
-Screenshot removed due to privacy concerns. 
+Screenshot removed due to privacy concerns.
 
 ### Dashboard Screen
 
-Click (dash) in upper right corner to bring up "dashboard". 
+Click (dash) in upper right corner to bring up "dashboard".
 
 ![Dashboard Screen](assets/images/dashboard.png)
 
 ### Output Modal
 
-And the result(s) are displayed. 
+And the result(s) are displayed.
 
 ![Output Modal](assets/images/output.png)
 
@@ -154,7 +154,9 @@ And I made more minor edits as well as polish this README.
   -- if populated, then Ajax calls will be made to fetch results
 - If setup was brought up, then upon SUBMIT the Ajax calls will be made.
 
-~~In reality, the events didn't actually quite happen this way. And that's a mess I have to untangle. It _was_ working at one point between 6AM and 10AM. Somehow the various merges seems to have broken it.~~ Program has been fixed. 
+~~In reality, the events didn't actually quite happen this way. And that's a mess I have to untangle. It _was_ working at one point between 6AM and 10AM. Somehow the various merges seems to have broken it.~~ Program has been fixed.
+
+On Monday morning, we discovered we did have a second usable horoscope that we can include. It is now active as button number 8 "Kelli Fox Horoscope".
 
 ### Limits and Workarounds
 
@@ -168,13 +170,15 @@ During the API evaluation phase, significant amount of time was lost trying to g
 
 To put it succintly, some APIs were not implemented properly and thus were blocked by browser's CORS/CORB filter. There are ways to bypass the CORS/CORB restrictions but it doesn't always work. And we decided our time is best spent elsewhere.
 
+We did manage to get ONE of the API bypassed with CORS-Anywhere bypass tool. It was added as Button 8.
+
 #### Moment.js quirks
 
 Using moment.js has its issues and quirks, and both caused some minor problems.
 
 - Moment.js "month" starts at 0, not 1, while day does start with 1. This caused some minor problems.
 
-- moment.js values are mutable. That means if you set a moment value to X, then do Y = X, and change X again, both X and Y will be changed. One must explicitly create a new moment value, not just a pointer to existing value. This caused a problem in the birthday calculation as I need both the original birthday AND a "birthday in current year" variable, and the calculations destroyed the original birthday. (see script.js 44-46)
+- moment.js values are mutable. That means if you set a moment value to X, then do Y = X, and change X again, both X and Y will be changed. One must explicitly create a new moment value, not just a pointer to existing value. This caused a problem in the birthday calculation as I need both the original birthday AND a "birthday in current year" variable, and the calculations destroyed the original birthday. (see script.js 45-47)
 
 ## Stretch Goals / Future Development
 
@@ -190,7 +194,7 @@ Some advice on the Chinese Zodiac could be added. Right now, it just tells you w
 
 ~~The lower left countdown is now a muted gray instead of proper white, and I can't figure out why. I turned it cyan for slightly better contrast, but it seems to be a uikit problem.~~ Found the problem. Someone removed .uk-light from the counter. It was there before. It is there now.
 
-The proposed Giphy button, the generated playlist, or the moon-phase button was never implemented. There are two buttons hidden at this time that may be utilized.
+The proposed Giphy button, the generated playlist, or the moon-phase button was never implemented. There are ~~two~~ one button hidden at this time that may be utilized.
 
 ## Author
 
