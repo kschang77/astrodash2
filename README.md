@@ -32,13 +32,19 @@ NOTE: The countdown clock color issue has been fixed. It's now white again.
 
 ### Setup Screen
 
-![Setup Screen](assets/images/setup.png)
+click (setup) in upper left to bring up the setup screen. 
+
+Screenshot removed due to privacy concerns. 
 
 ### Dashboard Screen
+
+Click (dash) in upper right corner to bring up "dashboard". 
 
 ![Dashboard Screen](assets/images/dashboard.png)
 
 ### Output Modal
+
+And the result(s) are displayed. 
 
 ![Output Modal](assets/images/output.png)
 
